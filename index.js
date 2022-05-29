@@ -13,6 +13,8 @@
 */
 const arrayObjectPegawai = require("./data-customer.json");
 
+// console.log(arrayObjectPegawai.length);
+
 function lakukanLooping(arrPegawai) {
   // ! JANGAN DIMODIFIKASI
   let dataYangAkanDilooping = arrPegawai;
@@ -23,19 +25,47 @@ function lakukanLooping(arrPegawai) {
 
       Contoh: ["Aisyah Nirmala", "Mansur Faisal", ...]
   */
-  let hasilLooping = null;
+  let index = 0;
+  let namaGabungan = [];
+  while (index < dataYangAkanDilooping.length) {
+    let gabungan =
+      dataYangAkanDilooping[index].namaDepan +
+      " " +
+      dataYangAkanDilooping[index].namaBelakang;
+    namaGabungan.push(gabungan);
+    index++;
+  }
+
+  let hasilLooping = namaGabungan;
 
   /*
     TODO 2: Buatlah sebuah variabel bernama "jumlahPria"
-      yang berisi jumlah pria dari masing masing pegawai
+      yang berisi jumlah pria dari masing masing pegawai (M)
   */
-  let jumlahPria = null;
 
+  let totPria = 0;
+  let totWanita = 0;
+  let totWaria = 0;
+  index = 0;
+
+  while (index < dataYangAkanDilooping.length) {
+    let list = dataYangAkanDilooping[index];
+    if (list.jenisKelamin == "M") {
+      totPria++;
+    } else if (list.jenisKelamin == "F") {
+      totWanita++;
+    } else {
+      totWaria++;
+    }
+    index++;
+  }
+
+  let jumlahPria = totPria;
   /*
     TODO 3: Buatlah sebuah variabel bernama "jumlahWanita"
-      yang berisi jumlah wanita dari masing masing pegawai
+      yang berisi jumlah wanita dari masing masing pegawai (F)
   */
-  let jumlahWanita = null;
+  let jumlahWanita = totWanita;
 
   /*
     TODO 4: Buatlah sebuah variabel bernama "komentar"
@@ -48,8 +78,16 @@ function lakukanLooping(arrPegawai) {
       Apabila imbang, maka komentar akan berisi:
         "Jumlah Pria dan Wanita berimbang"
   */
-  let komentar = null;
+  let komen = null; 
+  if (totPria > totWanita) {
+    komen = "Jumlah Pria lebih banyak dari Wanita";
+  } else if (totPria < totWanita) {
+    komen = "Jumlah Wanita lebih banyak dari Pria";
+  } else {
+    komen = "Jumlah Pria dan Wanita berimbang";
+  }
 
+  let komentar = komen;
   // ! JANGAN DIMODIFIKASI
   return {
     hasilLooping,
